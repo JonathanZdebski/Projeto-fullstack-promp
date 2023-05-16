@@ -1,3 +1,4 @@
+import PromptCard from "./PromptCard";
 import React from "react";
 
 const Profile = () => {
