@@ -8,8 +8,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         <span className="blue_gradient">{type} Post </span>
       </h1>
       <p className="desc text-left max-w-md">
-        {type} and share amazing prompts with the world, and let your
-        imagination run wild any AI-powered platform.
+        Compartilhe prompts incríveis com o mundo, e deixe sua imaginação correr
+        solta em qualquer plataforma alimentada por IA.
       </p>
       <form
         onSubmit={handleSubmit}
@@ -17,7 +17,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       >
         <label className="">
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your IA prompt
+            Digite seu prompt
           </span>
 
           <textarea
@@ -28,7 +28,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
                 prompt: e.target.value,
               })
             }
-            placeholder="Whrite your prompt here..."
+            placeholder="Escreva sua solicitação aqui..."
             required
             className="form_textarea"
           />
@@ -57,7 +57,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         </label>
         <div className="flex-end mx-3 mb-5 gap-4 ">
           <Link href="/" className="text-gray-500 text-sm">
-            Cancel
+            Cancelar
           </Link>
           <button
             type="submit"
