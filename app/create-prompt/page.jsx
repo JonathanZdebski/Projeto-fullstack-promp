@@ -49,3 +49,9 @@ const CreatePrompt = () => {
 };
 
 export default CreatePrompt;
+
+//É definida uma função assíncrona chamada "createPrompt" que recebe um evento como parâmetro. A função previne o
+//comportamento padrão do evento, define "submitting" como verdadeiro e, em seguida, envia uma requisição POST para
+//"/api/prompt/new" com os dados do formulário convertidos em JSON. A resposta é verificada e, se for bem-sucedida, a
+//página é redirecionada para "/". Se ocorrer algum erro, o erro é registrado no console. Finalmente, "submitting" é
+//definido como falso.

@@ -52,3 +52,5 @@ export const DELETE = async (request, { params }) => {
     return new Response("Failed to delete prompt", { status: 500 });
   }
 };
+
+//O componente atua na adição, atualização e remoção de items nas prompts.

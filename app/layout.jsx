@@ -25,3 +25,5 @@ const RootLayout = ({ children }) => (
 );
 
 export default RootLayout;
+
+//Layout padrão do projeto, com atualizações do next 13 atuais.

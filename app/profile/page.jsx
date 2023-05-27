@@ -11,6 +11,8 @@ const MyProfile = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
+  //useEffect foi utilizado para buscar os dados do usuário, em seguida convertidos para json.
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
@@ -21,6 +23,8 @@ const MyProfile = () => {
 
     if (session?.user.id) fetchPosts();
   }, []);
+
+  //definidas as funções "handleEdit" e "handleDelete" para lidar com a edição e exclusão de um post.
 
   const handleEdit = (post) => {
     router.push(`/update-prompt?id=${post._id}`);

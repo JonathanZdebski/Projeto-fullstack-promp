@@ -45,3 +45,7 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
+
+//processo utilizando next-auth para autenticação no Google, é preciso criar um projeto no Google Cloud Console para obter as secret keys.
+//A conexão é feita com mongodb e armazeuna os dados de usuário em uma coleção "Users" no BD.
+//Na nova atualização do NextJS utilizando a pasta App, não é mais preciso utilizar GetStaticProps e Paths para obter dados da API. No caso foi utilizado async function para o projeto.

@@ -15,3 +15,6 @@ export const GET = async (request, { params }) => {
     return new Response("Failed to fetch all prompts", { status: 500 });
   }
 };
+
+//a função "Prompt.find({ creator: params.id })" é chamada para buscar todos os registros da coleção "Prompt" que possuem o campo "creator" igual ao valor de "params.id". O campo "creator" é preenchido com os dados relacionados.
+//Por fim, é retornado um objeto Response com os prompts encontrados convertidos em formato JSON e o status 200.

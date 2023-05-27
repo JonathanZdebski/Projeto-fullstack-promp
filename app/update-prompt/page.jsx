@@ -65,3 +65,5 @@ const UpdatePrompt = () => {
 };
 
 export default UpdatePrompt;
+
+//o código define um componente "UpdatePrompt" que permite a edição e atualização de um prompt. Ele busca os detalhes do prompt com base no ID fornecido, exibe um formulário para editar os valores e envia uma requisição para atualizar o prompt quando o formulário é submetido.

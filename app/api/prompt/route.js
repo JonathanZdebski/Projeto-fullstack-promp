@@ -13,3 +13,5 @@ export const GET = async (request) => {
     return new Response("Failed to fetch all prompts", { status: 500 });
   }
 };
+
+//define uma função assíncrona chamada "GET" que recebe um objeto de requisição como parâmetro Dentro da função, há um bloco try-catch para lidar com possíveis erros.
