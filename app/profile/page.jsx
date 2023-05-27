@@ -3,7 +3,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Profile from "@components/profile";
+import Profile from "@components/Profile";
 import { useRouter } from "next/navigation";
 
 const MyProfile = () => {
