@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ContentLoader from "react-content-loader";
 
 import PromptCard from "./PromptCard";
 
@@ -20,6 +21,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
 
   // Estados de pesquisa
   const [searchText, setSearchText] = useState("");
@@ -27,10 +29,14 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
-    const data = await response.json();
+    // Simulando o atraso na obtenção dos dados
+    setTimeout(async () => {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
 
-    setAllPosts(data);
+      setAllPosts(data);
+      setLoading(false); // Marca o carregamento como concluído após obter os dados
+    }, 1500);
   };
 
   useEffect(() => {
@@ -38,7 +44,7 @@ const Feed = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // sinalizador 'i' para pesquisa que não diferencia maiúsculas de minúsculas
+    const regex = new RegExp(searchtext, "i");
     return allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
@@ -51,7 +57,6 @@ const Feed = () => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
-    // método de debounce
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filterPrompts(e.target.value);
@@ -79,9 +84,18 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
       {/*Prompts*/}
-      {searchText ? (
+      {loading ? (
+        // Renderiza o ContentLoader enquanto os dados estão sendo carregados
+        <ContentLoader
+          viewBox="0 0 400 300"
+          speed={2}
+          backgroundColor="#b6b6b6  "
+          foregroundColor="#ecebeb"
+          style={{ marginTop: "90px" }}
+          width={750}
+        ></ContentLoader>
+      ) : searchText ? (
         <PromptCardList
           data={searchedResults}
           handleTagClick={handleTagClick}
