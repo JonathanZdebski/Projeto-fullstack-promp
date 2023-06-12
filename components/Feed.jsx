@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import ContentLoader from "react-content-loader";
-
 import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
@@ -92,8 +91,7 @@ const Feed = () => {
           speed={2}
           backgroundColor="#b6b6b6  "
           foregroundColor="#ecebeb"
-          style={{ marginTop: "90px" }}
-          width={750}
+          style={{ marginTop: "90px", width: "100%" }}
         ></ContentLoader>
       ) : searchText ? (
         <PromptCardList
