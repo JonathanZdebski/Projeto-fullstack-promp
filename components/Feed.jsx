@@ -30,11 +30,16 @@ const Feed = () => {
   const fetchPosts = async () => {
     // Simulando o atraso na obtenção dos dados
     setTimeout(async () => {
-      const response = await fetch("/api/prompt");
-      const data = await response.json();
+      try {
+        const response = await fetch("/api/prompt");
+        const data = await response.json();
 
-      setAllPosts(data);
-      setLoading(false); // Marca o carregamento como concluído após obter os dados
+        setAllPosts(data);
+        setLoading(false); // Marca o carregamento como concluído após obter os dados
+      } catch (error) {
+        console.error("Erro ao obter os dados:", error);
+        setLoading(false); // Marca o carregamento como concluído, mesmo em caso de erro
+      }
     }, 1500);
   };
 
