@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import ContentLoader from "react-content-loader";
 import PromptCard from "./PromptCard";
+import { useRouter } from "next/navigation";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className="mt-16 prompt_layout">
+    <div className="mt-1 prompt_layout">
       {data.map((post) => (
         <PromptCard
           key={post._id}
@@ -26,6 +27,7 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
+  const [showReloadButton, setShowReloadButton] = useState(true);
 
   const fetchPosts = async () => {
     // Simulando o atraso na obtenção dos dados
@@ -76,6 +78,15 @@ const Feed = () => {
     setSearchedResults(searchResult);
   };
 
+  const handleReloadPromptCardList = () => {
+    try {
+      window.location.reload(); // Tentar recarregar a página
+    } catch (error) {
+    } finally {
+      setShowReloadButton(false); // Ocultar o botão de recarregamento após o clique
+    }
+  };
+
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
@@ -89,8 +100,14 @@ const Feed = () => {
         />
       </form>
       {/*Prompts*/}
-      {loading ? (
-        // Renderiza o ContentLoader enquanto os dados estão sendo carregados
+      <div className="black_btn mt-5">
+        {!loading && showReloadButton && (
+          <button onClick={handleReloadPromptCardList}>
+            Recarregar Prompts
+          </button>
+        )}
+      </div>
+      {loading ? ( // Renderiza o ContentLoader enquanto os dados estão sendo carregados
         <ContentLoader
           viewBox="0 0 400 300"
           speed={2}
